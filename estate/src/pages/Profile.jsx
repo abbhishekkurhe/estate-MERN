@@ -12,14 +12,14 @@ export default function Profile() {
         />
 
         {/* User Info */}
-        <h2 className="text-2xl font-bold text-white mt-4">John Doe</h2>
+        <h2 className="text-2xl font-bold text-white mt-4">Abbhishek </h2>
         <p className="text-gray-400 text-sm">Real Estate Agent</p>
         <p className="text-gray-400 text-sm">📍 New York, USA</p>
 
         {/* Contact Info */}
         <div className="mt-4">
-          <p className="text-gray-300"><strong>Email:</strong> johndoe@email.com</p>
-          <p className="text-gray-300"><strong>Phone:</strong> +1 123 456 7890</p>
+          <p className="text-gray-300"><strong>Email:</strong> connectabbhishekkurhe@gmail.com</p>
+          <p className="text-gray-300"><strong>Phone:</strong> +91 9767135254</p>
         </div>
 
         {/* About Section */}
@@ -32,7 +32,7 @@ export default function Profile() {
 
         {/* Edit Profile Button */}
         <button className="w-full bg-blue-500 text-white py-3 mt-6 rounded-md hover:bg-blue-600 transition">
-          Edit Profile
+          
         </button>
       </div>
     </div>
