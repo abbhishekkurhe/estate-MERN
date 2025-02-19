@@ -43,9 +43,9 @@ export default function SignIn() {
         {/* Forgot Password & Sign Up Link */}
         <div className="text-center mt-4 text-gray-400">
           <p>
-            Don't have an account?{' '}
-            <Link to="/signup" className="text-blue-400 hover:underline">
-              Sign Up
+            already have an account?{' '}
+            <Link to="/signUp" className="text-blue-400 hover:underline">
+              Sign In
             </Link>
           </p>
         </div>
