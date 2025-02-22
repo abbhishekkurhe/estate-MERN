@@ -13,9 +13,9 @@ export default function Header() {
       <button className=' px-6 py-3 border-4 border-blue-800 rounded-md'>
       <Link to ="/">Home</Link>
       </button>
-      <button className=' px-6 py-3 border-4 border-blue-800 rounded-md'>
+      {/* <button className=' px-6 py-3 border-4 border-blue-800 rounded-md'>
       <Link to ="/profile">profile</Link>
-      </button>
+      </button> */}
       <button className=' px-6 py-3 border-4 border-blue-800 rounded-md'>
       <Link to ="/about">contact</Link>
       </button>

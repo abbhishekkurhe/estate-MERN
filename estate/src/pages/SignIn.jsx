@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { SignInStart, SignInSuccess, SignInFailure } from "../redux/user/userSlice";
 
 export default function SignIn() {
-  const [formData, setFormData] = useState({});
-  const [error, setError] = useState(null);
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setFormData({
@@ -16,28 +18,25 @@ export default function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(SignInStart()); // Ensure correct case
     try {
-      setLoading(true);
       const res = await fetch("/api/auth/signIn", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+
       const data = await res.json();
-      console.log(data);
-      if (data.success === false) {
-        setLoading(false);
-        setError(data.message);
+
+      if (!res.ok) {
+        dispatch(SignInFailure(data.message || "Something went wrong"));
         return;
       }
-      setLoading(false);
-      setError(null);
+
+      dispatch(SignInSuccess(data));
       navigate("/");
     } catch (error) {
-      setLoading(false);
-      setError(error.message);
+      dispatch(SignInFailure(error.message));
     }
   };
 
@@ -45,7 +44,7 @@ export default function SignIn() {
     <div className="flex min-h-screen items-center justify-center bg-gray-100 p-6">
       <div className="w-full max-w-md bg-white bg-opacity-90 backdrop-blur-md shadow-lg rounded-2xl p-8 border border-gray-200">
         <h1 className="text-4xl font-bold text-center text-gray-900 mb-6">Welcome Back</h1>
-        
+
         <form onSubmit={handleSubmit} className="space-y-5">
           <input
             type="email"
@@ -53,16 +52,20 @@ export default function SignIn() {
             className="w-full border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 rounded-lg p-3 bg-gray-100"
             id="email"
             onChange={handleChange}
+            value={formData.email}
+            required
           />
-          
+
           <input
             type="password"
             placeholder="Password"
             className="w-full border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 rounded-lg p-3 bg-gray-100"
             id="password"
             onChange={handleChange}
+            value={formData.password}
+            required
           />
-          
+
           <button
             disabled={loading}
             className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold p-3 rounded-lg uppercase tracking-wide hover:opacity-90 transition-all duration-200 disabled:opacity-70"
