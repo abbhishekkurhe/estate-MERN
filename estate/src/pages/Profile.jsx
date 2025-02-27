@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Profile() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-900">
+    <div className="flex items-center justify-center min-h-screen pt-28 bg-gray-900">
       <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md text-center">
         {/* Profile Image */}
         <img
