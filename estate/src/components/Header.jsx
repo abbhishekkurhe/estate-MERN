@@ -7,7 +7,8 @@ export default function Header() {
   const { currentUser } = useSelector((state) => state.user);
 
   return (
-    <header className="bg-gradient-to-r from-purple-900 to-blue-600 shadow-2xl fixed top-0 left-0 w-full z-50">
+    <header className="bg-gradient-to-r from-purple-900 to-blue-600 shadow-2xl fixed top-0 left-0 w-full ">
+      
       <div className="flex flex-wrap justify-between items-center w-full py-4 px-6">
         
         {/* LuxeState - Fully Touching Left Corner */}
