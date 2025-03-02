@@ -44,8 +44,9 @@ export default function SignUp() {
   }
   
   return (
-    <div className='p-10'>
-      <div className='mb-4 max-w-lg mx-auto bg-slate-200'>
+    
+    <div className='my-4'>
+      <div className='my-36 max-w-lg mx-auto bg-slate-300'>
         <h1 className='text-3xl text-center font-extrabold text-slate-800'>SignUp</h1>
         <form onSubmit={handleSubmit} className='flex flex-col gap-3 p-3'>
 
@@ -71,5 +72,6 @@ export default function SignUp() {
 
       </div>
     </div>
+    
   )
 }
