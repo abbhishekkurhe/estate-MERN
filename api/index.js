@@ -5,8 +5,7 @@ import router from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import listingRouter from './routes/listing.route.js'
-
-
+import path from 'path';
 dotenv.config();
 
 // Connect to MongoDB
@@ -19,7 +18,9 @@ mongoose
     console.error("MongoDB connection error:", err);
     process.exit(1); // Stop the server on DB connection failure
   });
+  
 
+  const __dirname = path.resolve();
 const app = express();
 
 // Middleware for JSON parsing
@@ -32,6 +33,11 @@ app.use("/api/user", router);
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listingRouter);
 
+app.use(express.static(path.join(__dirname,'/estate/dist')));
+
+app.get('*',(req,res) => {
+  res.sendFile(path.join(__dirname,'estate','dist','index.html'))
+})
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
